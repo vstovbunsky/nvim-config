@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Except for..
+!.gitignore
+
+!nvim/
+!fish/
+!karabiner/karabiner.json
