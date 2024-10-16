@@ -10,7 +10,7 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "clangd",    -- C++
+--        "clangd",    -- C++
         "pyright",   -- Python
         "tsserver",  -- JavaScript/TypeScript
       },
@@ -35,4 +35,5 @@ return {
   		},
   	},
   },
+
 }
