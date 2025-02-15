@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Allow tracking of 'nvim' and 'powershell' folders and all their contents
+!.gitignore
+
+!nvim/
+!powershell/
+
+# Ensure Git tracks nested files inside these folders
+!nvim/**
+!powershell/**
