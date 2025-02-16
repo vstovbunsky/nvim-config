@@ -1,4 +1,4 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
 -- bootstrap lazy and all plugins
@@ -143,7 +143,7 @@ end
 function Run_bat_file(bat_file)
     local project_root = Find_project_root()
     if project_root then
-        vim.cmd('!cd ' .. project_root .. ' && ' .. bat_file)
+        vim.cmd('!cd "' .. project_root .. '" && ' .. bat_file .. '"')
     else
         print("Failed to find project root.")
     end
@@ -162,20 +162,31 @@ function Generate_lsp_bindings()
 end
 
 
+-- always copy-paste using the system clipboard
+vim.opt.clipboard = "unnamedplus"
 -- makes it so you don't lose your clipboard when pasting over selected text
-vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("x", "<leader>p", "\"_dP", { noremap = true, silent = true })
+-- prevent deleting from overwriting clipboard
+vim.keymap.set("n", "d", "\"_d", { noremap = true })
+vim.keymap.set("x", "d", "\"_d", { noremap = true })
+vim.keymap.set("n", "c", "\"_c", { noremap = true })
+vim.keymap.set("x", "c", "\"_c", { noremap = true })
+vim.keymap.set("n", "x", "\"_x", { noremap = true })
+vim.keymap.set("x", "x", "\"_x", { noremap = true })
+
+-- TODO: figure this part out
 -- yank to system clipboard
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
-
-vim.keymap.set("n", "<leader>p", "\"+p")
-vim.keymap.set("v", "<leader>p", "\"+p")
-vim.keymap.set("n", "<leader>P", "\"+P")
-
--- delete to void register
-vim.keymap.set("n", "<leader>d", "\"_d")
-vim.keymap.set("v", "<leader>d", "\"_d")
+-- vim.keymap.set("n", "<leader>y", "\"+y")
+-- vim.keymap.set("v", "<leader>y", "\"+y")
+-- vim.keymap.set("n", "<leader>Y", "\"+Y")
+--
+-- vim.keymap.set("n", "<leader>p", "\"+p")
+-- vim.keymap.set("v", "<leader>p", "\"+p")
+-- vim.keymap.set("n", "<leader>P", "\"+P")
+--
+-- -- delete to void register
+-- vim.keymap.set("n", "<leader>d", "\"_d")
+-- vim.keymap.set("v", "<leader>d", "\"_d")
 
 -- Bind Alt+O to switch between .cpp and .h files
 vim.api.nvim_set_keymap('n', '<M-o>', ':lua SwitchHeaderSource()<CR>', { noremap = true, silent = true })

@@ -26,8 +26,8 @@ Set-Alias g git
 Set-Alias grep findstr
 Set-Alias tig 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
-Set-Alias sublime 'C:\Program Files\Sublime Text\sublime_text.exe'
-Set-Alias blender 'C:\Program Files (x86)\Steam\steamapps\common\Blender\blender.exe'
+#Set-Alias sublime 'C:\Program Files\Sublime Text\sublime_text.exe'
+#Set-Alias blender 'C:\Program Files (x86)\Steam\steamapps\common\Blender\blender.exe'
 
 # Utilities
 function which ($command) {
